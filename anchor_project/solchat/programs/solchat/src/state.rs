@@ -80,13 +80,3 @@ pub struct MessageMetadata {
     pub emoji: String,
     pub bump: u8,
 }
-
-// #[account]
-// #[derive(InitSpace)]
-// pub struct Reaction {
-//     pub message: Pubkey,
-//     pub user: Pubkey,
-//     #[max_len(EMOJI_LENGTH)]
-//     pub emoji: String,
-//     pub bump: u8,
-// }
