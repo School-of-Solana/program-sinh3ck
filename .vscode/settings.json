@@ -1,0 +1,3 @@
+{
+  "rust-analyzer.linkedProjects": ["anchor_project/solchat/Cargo.toml"]
+}
