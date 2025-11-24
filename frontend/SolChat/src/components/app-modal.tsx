@@ -4,12 +4,14 @@ import { ReactNode } from 'react'
 
 export function AppModal({
   children,
+  trigger,
   title,
   submit,
   submitDisabled,
   submitLabel,
 }: {
   children: ReactNode
+  trigger?: ReactNode
   title: string
   submit?: () => void
   submitDisabled?: boolean
@@ -18,7 +20,7 @@ export function AppModal({
   return (
     <Dialog modal={false}>
       <DialogTrigger asChild>
-        <Button variant="outline">{title}</Button>
+        {trigger ? (trigger) : <Button variant="outline">{title}</Button>}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[525px]">
         <DialogHeader>

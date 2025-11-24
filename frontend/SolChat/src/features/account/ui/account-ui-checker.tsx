@@ -1,5 +1,5 @@
-import { address } from 'gill'
 import { useSolana } from '@/components/solana/use-solana'
+import { address } from 'gill'
 import { AccountUiBalanceCheck } from './account-ui-balance-check'
 
 export function AccountUiChecker() {

@@ -6,7 +6,10 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-solchat = "2sLSWFDEgyXYQgwRVeUsJ5RrPKtaJfacRMGrHiKTE4UT"
+solchat = "8QH6X6khHZZi1wmgbgzsKg6LBWEb2nij1m923UiViTY4"
+
+[programs.devnet]
+solchat = "8QH6X6khHZZi1wmgbgzsKg6LBWEb2nij1m923UiViTY4"
 
 [registry]
 url = "https://api.apr.dev"

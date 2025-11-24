@@ -243,4 +243,7 @@ anchor test
 
 ### Additional Notes for Evaluators
 
-Unfortunately, I was not able to finish and deploy the frontend app. React is too much of a steep learning curve for the time I have left. I solely implemented a button to create a channel to ensure it successfully interacts with the solana program deployed on Devnet. A channel is successfully created.
+Unfortunately, I don't have more time to spend on this project to implement the last missing features on the frontend.
+Missing features on the frontend:
+- React to message
+- Reply to message

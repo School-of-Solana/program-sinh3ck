@@ -1,5 +1,14 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { ArrowRight, BookOpen, CookingPot, Droplets, LucideWallet, MessageCircleQuestion } from 'lucide-react'
+import {
+  ArrowRight,
+  BookOpen,
+  CookingPot,
+  Droplets,
+  LucideAnchor,
+  LucideCode,
+  LucideWallet,
+  MessageCircleQuestion,
+} from 'lucide-react'
 import React from 'react'
 import { AppHero } from '@/components/app-hero'
 
@@ -42,6 +51,16 @@ const secondary: {
     label: 'Wallet UI Docs',
     href: 'https://wallet-ui.dev',
     icon: <LucideWallet className="w-5 h-5 text-blue-400" />,
+  },
+  {
+    label: 'Anchor Docs',
+    href: 'https://www.anchor-lang.com/docs',
+    icon: <LucideAnchor className="w-5 h-5 text-indigo-400" />,
+  },
+  {
+    label: 'Codama Repository',
+    href: 'https://github.com/codama-idl/codama',
+    icon: <LucideCode className="w-5 h-5 text-lime-400" />,
   },
 ]
 

@@ -17,7 +17,7 @@ export function useSendMessageMutation({ account, formData }: { account: UiWalle
   
   return useMutation({
     mutationFn: async () => {
-      let message_data_address = await getProgramDerivedAddress({
+      const message_data_address = await getProgramDerivedAddress({
         programAddress,
         seeds: [
             getBytesEncoder().encode(new Uint8Array([95, 77, 67])),
@@ -26,7 +26,7 @@ export function useSendMessageMutation({ account, formData }: { account: UiWalle
       });
       // console.log(message_data_address[0])
       const message_metadata = await fetchMessageMetadata(client.rpc, message_data_address[0])
-      let message_address = await getProgramDerivedAddress({
+      const message_address = await getProgramDerivedAddress({
         programAddress,
         seeds: [
             getBytesEncoder().encode(

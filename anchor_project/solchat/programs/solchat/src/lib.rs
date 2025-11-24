@@ -14,7 +14,7 @@ pub mod errors;
 pub mod instructions;
 pub mod state;
 
-declare_id!("2sLSWFDEgyXYQgwRVeUsJ5RrPKtaJfacRMGrHiKTE4UT");
+declare_id!("8QH6X6khHZZi1wmgbgzsKg6LBWEb2nij1m923UiViTY4");
 
 #[program]
 pub mod solchat {
