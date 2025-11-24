@@ -17,7 +17,10 @@ export function DMUiCard({ account, data }: { account: UiWalletAccount; data: { 
   const { query, decodedAccounts } = useGetMessages({account});
   const messages = decodedAccounts?.filter((decodedAccount) => {
     return decodedAccount.data.parent == data.address
+  }).sort((m1, m2) => {
+    return (m1.data.timestamp === m2.data.timestamp) ? 0 : m1.data.timestamp > m2.data.timestamp ? 1 : -1
   })
+
     // console.log(decodedAccounts)
 
   const { query: query2, decodedAccounts: decodedAccounts2 } = useGetUserProfiles();
