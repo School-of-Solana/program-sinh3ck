@@ -1,0 +1,1414 @@
+{
+  "address": "8QH6X6khHZZi1wmgbgzsKg6LBWEb2nij1m923UiViTY4",
+  "metadata": {
+    "name": "solchat",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "change_channel_settings",
+      "discriminator": [
+        51,
+        33,
+        5,
+        116,
+        154,
+        144,
+        72,
+        121
+      ],
+      "accounts": [
+        {
+          "name": "channel_authority",
+          "signer": true
+        },
+        {
+          "name": "channel",
+          "writable": true
+        },
+        {
+          "name": "channel_member",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "channel_authority"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "is_private",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "change_user_channel_permissions",
+      "discriminator": [
+        161,
+        232,
+        65,
+        97,
+        119,
+        214,
+        199,
+        206
+      ],
+      "accounts": [
+        {
+          "name": "channel_authority",
+          "signer": true
+        },
+        {
+          "name": "user_authority"
+        },
+        {
+          "name": "channel"
+        },
+        {
+          "name": "channel_member_signer",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "channel_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel_member_user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "permission",
+          "type": {
+            "defined": {
+              "name": "ChannelPermission"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_channel",
+      "discriminator": [
+        37,
+        105,
+        253,
+        99,
+        87,
+        46,
+        223,
+        20
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "channel",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  67,
+                  72,
+                  65,
+                  78,
+                  78,
+                  69,
+                  76
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "name"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel_members",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "message_metadata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  67
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "is_private",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "create_dm",
+      "discriminator": [
+        46,
+        5,
+        70,
+        190,
+        39,
+        119,
+        37,
+        200
+      ],
+      "accounts": [
+        {
+          "name": "user_a",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_b"
+        },
+        {
+          "name": "user_a_profile",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_a"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_b_profile",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_b"
+              }
+            ]
+          }
+        },
+        {
+          "name": "dm_thread",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  68,
+                  77
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "first"
+              },
+              {
+                "kind": "arg",
+                "path": "second"
+              }
+            ]
+          }
+        },
+        {
+          "name": "message_metadata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  67
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dm_thread"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "first",
+          "type": "pubkey"
+        },
+        {
+          "name": "second",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "create_user",
+      "discriminator": [
+        108,
+        227,
+        130,
+        130,
+        252,
+        109,
+        75,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "username",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "exit_channel",
+      "discriminator": [
+        239,
+        116,
+        36,
+        147,
+        137,
+        0,
+        107,
+        233
+      ],
+      "accounts": [
+        {
+          "name": "user_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel",
+          "writable": true
+        },
+        {
+          "name": "channel_member",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "invite_to_channel",
+      "discriminator": [
+        203,
+        52,
+        194,
+        48,
+        173,
+        5,
+        43,
+        235
+      ],
+      "accounts": [
+        {
+          "name": "channel_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_authority"
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel",
+          "writable": true
+        },
+        {
+          "name": "channel_member_signer",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "channel_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel_member_user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "permission",
+          "type": {
+            "defined": {
+              "name": "ChannelPermission"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "join_channel",
+      "discriminator": [
+        124,
+        39,
+        115,
+        89,
+        217,
+        26,
+        38,
+        29
+      ],
+      "accounts": [
+        {
+          "name": "user_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel",
+          "writable": true
+        },
+        {
+          "name": "channel_member",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "react_to_message",
+      "discriminator": [
+        221,
+        59,
+        73,
+        208,
+        243,
+        164,
+        247,
+        43
+      ],
+      "accounts": [
+        {
+          "name": "author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "parent"
+        },
+        {
+          "name": "message_metadata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  67
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "message",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  83,
+                  83,
+                  65,
+                  71,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              },
+              {
+                "kind": "arg",
+                "path": "messageid"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel_member",
+          "optional": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              },
+              {
+                "kind": "account",
+                "path": "author"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "emoji",
+          "type": "string"
+        },
+        {
+          "name": "messageid",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "remove_from_channel",
+      "discriminator": [
+        100,
+        246,
+        150,
+        228,
+        225,
+        2,
+        145,
+        22
+      ],
+      "accounts": [
+        {
+          "name": "channel_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user_authority"
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  85,
+                  83,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel",
+          "writable": true
+        },
+        {
+          "name": "channel_member_signer",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "channel_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel_member_user",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "channel"
+              },
+              {
+                "kind": "account",
+                "path": "user_authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "send_message",
+      "discriminator": [
+        57,
+        40,
+        34,
+        178,
+        189,
+        10,
+        65,
+        26
+      ],
+      "accounts": [
+        {
+          "name": "author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "parent"
+        },
+        {
+          "name": "message_metadata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  67
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "message",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  83,
+                  83,
+                  65,
+                  71,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              },
+              {
+                "kind": "account",
+                "path": "message_metadata.count",
+                "account": "MessageMetadata"
+              }
+            ]
+          }
+        },
+        {
+          "name": "channel_member",
+          "optional": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  77,
+                  66,
+                  69,
+                  82
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              },
+              {
+                "kind": "account",
+                "path": "author"
+              }
+            ]
+          }
+        },
+        {
+          "name": "reply_to_message",
+          "optional": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  77,
+                  69,
+                  83,
+                  83,
+                  65,
+                  71,
+                  69
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "parent"
+              },
+              {
+                "kind": "arg",
+                "path": "replytomessageid"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "message_content",
+          "type": "string"
+        },
+        {
+          "name": "replytomessageid",
+          "type": {
+            "option": "u32"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Channel",
+      "discriminator": [
+        49,
+        159,
+        99,
+        106,
+        220,
+        87,
+        219,
+        88
+      ]
+    },
+    {
+      "name": "ChannelMember",
+      "discriminator": [
+        165,
+        1,
+        218,
+        177,
+        114,
+        130,
+        205,
+        10
+      ]
+    },
+    {
+      "name": "DMThread",
+      "discriminator": [
+        154,
+        208,
+        143,
+        70,
+        54,
+        23,
+        136,
+        140
+      ]
+    },
+    {
+      "name": "Message",
+      "discriminator": [
+        110,
+        151,
+        23,
+        110,
+        198,
+        6,
+        125,
+        181
+      ]
+    },
+    {
+      "name": "MessageMetadata",
+      "discriminator": [
+        99,
+        170,
+        51,
+        219,
+        112,
+        22,
+        245,
+        83
+      ]
+    },
+    {
+      "name": "UserProfile",
+      "discriminator": [
+        32,
+        37,
+        119,
+        205,
+        179,
+        180,
+        13,
+        194
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "UsernameTooLong",
+      "msg": "Username too long"
+    },
+    {
+      "code": 6001,
+      "name": "ChannelNameTooLong",
+      "msg": "Channel name too long"
+    },
+    {
+      "code": 6002,
+      "name": "InsufficientPermissions",
+      "msg": "Insufficient Permissions"
+    },
+    {
+      "code": 6003,
+      "name": "CannotJoinPrivateChannel",
+      "msg": "Cannot join private channel"
+    },
+    {
+      "code": 6004,
+      "name": "CannotChangeOwnPermissions",
+      "msg": "Cannot change own permissions"
+    },
+    {
+      "code": 6005,
+      "name": "CannotDMYourself",
+      "msg": "Cannot DM yourself"
+    },
+    {
+      "code": 6006,
+      "name": "SignerNotInPair",
+      "msg": "Signer not in provided pair"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidPairOrdering",
+      "msg": "Invalid pair ordering"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidChannelOrDMThread",
+      "msg": "Invalid channel or DM thread"
+    },
+    {
+      "code": 6009,
+      "name": "ChannelMemberAccountNotProvided",
+      "msg": "Channel member account not provided"
+    },
+    {
+      "code": 6010,
+      "name": "MessageContentTooLong",
+      "msg": "Message content too long"
+    },
+    {
+      "code": 6011,
+      "name": "ReplyToMessageIDRequired",
+      "msg": "Reply to message ID required"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidEmoji",
+      "msg": "Invalid Emoji"
+    },
+    {
+      "code": 6013,
+      "name": "TooManyReactions",
+      "msg": "Too many reactions"
+    }
+  ],
+  "types": [
+    {
+      "name": "Channel",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "is_private",
+            "type": "bool"
+          },
+          {
+            "name": "member_count",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChannelMember",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "channel",
+            "type": "pubkey"
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "permissions",
+            "type": {
+              "defined": {
+                "name": "ChannelPermission"
+              }
+            }
+          },
+          {
+            "name": "joined_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChannelPermission",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Admin"
+          },
+          {
+            "name": "AddMember"
+          },
+          {
+            "name": "RemoveMember"
+          },
+          {
+            "name": "ChangeSettings"
+          },
+          {
+            "name": "Reader"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DMThread",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user_a",
+            "type": "pubkey"
+          },
+          {
+            "name": "user_b",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Message",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "author",
+            "type": "pubkey"
+          },
+          {
+            "name": "parent",
+            "type": "pubkey"
+          },
+          {
+            "name": "content",
+            "type": "string"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "reply_to",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MessageMetadata",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "count",
+            "type": "u32"
+          },
+          {
+            "name": "emoji",
+            "type": "string"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserProfile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "joined_channels",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
